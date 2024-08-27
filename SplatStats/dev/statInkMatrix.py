@@ -8,7 +8,11 @@ import SplatStats as splat
 import matplotlib.pyplot as plt
 
 (six, USR) = (1, 'dsk')
-SSON = ['Drizzle Season 2022', 'Chill Season 2022', 'Fresh Season 2023']
+SSON = [
+    'Drizzle Season 2022', 'Chill Season 2022', ' Fresh 2022', 'Sizzle Season 2022',
+    'Drizzle Season 2023', 'Chill Season 2023', ' Fresh 2023', 'Sizzle Season 2023',
+    'Drizzle Season 2024', 'Chill Season 2024', ' Fresh 2024', 'Sizzle Season 2024',
+]
 SEASON = SSON[six]
 ###############################################################################
 # Get files and set font

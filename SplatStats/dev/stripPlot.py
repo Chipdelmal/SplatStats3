@@ -239,5 +239,5 @@ fig.patch.set_facecolor("#000000")
 fName = f'WeaponUsage.png'
 fig.savefig(
     path.join(DATA_PATH, 'inkstats/'+fName), 
-    dpi=350, bbox_inches='tight', facecolor=fig.get_facecolor()
+    dpi=200, bbox_inches='tight', facecolor=fig.get_facecolor()
 )

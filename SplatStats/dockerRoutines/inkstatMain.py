@@ -1,6 +1,11 @@
 # !/usr/bin/env python3
 
-import os    
+import os
+os.environ["OMP_NUM_THREADS"] = "12" # export OMP_NUM_THREADS=4
+os.environ["OPENBLAS_NUM_THREADS"] = "12" # export OPENBLAS_NUM_THREADS=4 
+os.environ["MKL_NUM_THREADS"] = "12" # export MKL_NUM_THREADS=6
+os.environ["VECLIB_MAXIMUM_THREADS"] = "12" # export VECLIB_MAXIMUM_THREADS=4
+os.environ["NUMEXPR_NUM_THREADS"] = "12" # export NUMEXPR_NUM_THREADS=6
 import tempfile
 os.environ['MPLCONFIGDIR'] = tempfile.mkdtemp()
 import numpy as np
@@ -12,10 +17,14 @@ import matplotlib.pyplot as plt
 from matplotlib.transforms import Bbox
 import SplatStats as splat
 
-
+# SSON = [
+#     'Drizzle Season 2022', 'Chill Season 2022', ' Fresh 2022', 'Sizzle Season 2022',
+#     'Drizzle Season 2023', 'Chill Season 2023', ' Fresh 2023', 'Sizzle Season 2023',
+#     'Drizzle Season 2024', 'Chill Season 2024', ' Fresh 2024', 'Sizzle Season 2024',
+# ]
 if splat.isNotebook():
     (SEASON, GMODE, TITLES, OVERWRITE, DPI) = (
-        'Fresh Season 2024', 'All Modes', 'True', 'True', '500'
+        'All Seasons', 'All Modes', 'True', 'True', '500'
     )
 else:
     (SEASON, GMODE, TITLES, OVERWRITE, DPI) = argv[1:]
@@ -140,8 +149,15 @@ COLS = [
     '#4361ee', '#9030FF', '#B62EA7', 
     '#ff006e', '#fb8b24', '#80ed99'
 ]*100
+# cPal = splat.colorPaletteFromHexList(
+#     [COLS[six]+'FF', COLS[3]+'AA', '#000000', '#000000', '#000000']
+# )
 cPal = splat.colorPaletteFromHexList(
-    [COLS[six]+'FF', COLS[3]+'AA', '#000000', '#000000', '#000000']
+    [
+        splat.SEASON_COLORS[six][0], splat.SEASON_COLORS[six][0],
+        '#000000', 
+        splat.SEASON_COLORS[six][1], splat.SEASON_COLORS[six][1]
+    ]
 )
 (fig, ax) = plt.subplots(figsize=(20, 20), facecolor='#000000')
 ax.set_facecolor('#000000')

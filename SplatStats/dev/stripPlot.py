@@ -142,7 +142,7 @@ SPLATFEST_DAYS = sorted(list(
 SAT_CATS = [
     '#8338ec', '#ff006e', '#3a86ff', '#f15bb5', '#6BFF00',
 ]
-NORM = colors.SymLogNorm(linthresh=.250e3, vmin=0, vmax=17.5e3)
+NORM = colors.SymLogNorm(linthresh=.50e3, vmin=0, vmax=17.5e3)
 MAPS = [
     splat.colorPaletteFromHexList(['#000000', c, '#ffffff']) 
     for c in SAT_CATS
